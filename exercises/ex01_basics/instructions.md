@@ -6,8 +6,6 @@ Welcome to the first (and main) exercise of this Git workshop! This exercise wil
 
 You'll learn by doing - each step builds on the previous one, and by the end, you'll have a solid understanding of Git fundamentals.
 
-**Estimated time:** 45-60 minutes
-
 ---
 
 ## 🎯 Learning Objectives
@@ -357,45 +355,23 @@ Go to your GitHub repository and:
 
 ## 🎉 Congratulations!
 
-You've completed the Git Basics workshop! You now know:
-
-✅ How to configure Git  
-✅ How to create meaningful commits  
-✅ How to follow commit conventions  
-✅ How to push changes to GitHub  
-✅ How to review your work with `git log`  
-✅ The fundamental Git workflow used by professional developers  
+You've completed the Git Basics workshop!
 
 ## 📚 What's Next?
 
-Now that you've mastered the basics, you can:
+Now that you've mastered the basics, you can try the bonus exercises:
 
-1. **Practice regularly** - Use Git in all your projects
-2. **Learn branching** - Create feature branches for new work
-3. **Explore merging** - Combine different branches
-4. **Try pull requests** - Collaborate with others on GitHub
-5. **Contribute to open source** - Apply your skills to real projects
+The **bonus exercises** cover advanced Git techniques used by professional developers:
 
-## 🤔 Quick Quiz (Self-Check)
+🌿 **Branching strategies** - Learn to work on multiple features simultaneously  
+🔀 **Merging and rebasing** - Combine work from different branches  
+⚔️ **Conflict resolution** - Handle merge conflicts like a pro  
+📦 **Stashing** - Save work in progress temporarily  
+↩️ **Undoing changes** - Learn to fix mistakes safely  
+🔍 **Advanced history** - Master Git's powerful history tools  
 
-Test your understanding:
-
-1. What's the difference between `git add` and `git commit`?
-2. When should you use `feat:` vs `fix:` in commit messages?
-3. What command shows you the current status of your repository?
-4. How do you push changes to GitHub?
-5. What does the staging area do?
-
-If you can answer these questions, you're ready to use Git in real projects!
-
-## 💡 Remember
-
-- **Commit often** - Small, frequent commits are better than large ones
-- **Write clear messages** - Your future self (and teammates) will thank you
-- **Use `git status` frequently** - It's your best friend when working with Git
-- **Don't be afraid to experiment** - You can always undo changes before pushing
+**👉 Continue your journey:** [Bonus - Advanced Git](/exercises/bonus/instructions.md)
 
 ---
 
 **Happy coding and happy Git-ing!** 🚀
-

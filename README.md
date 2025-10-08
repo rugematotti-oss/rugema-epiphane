@@ -60,9 +60,22 @@ Good commit messages are crucial for project maintenance. We follow these conven
 
 ## 🎓 Getting Started
 
-This workshop contains one comprehensive exercise that covers all the Git basics you need to know.
+This workshop contains exercises designed to take you from beginner to advanced Git user.
 
+### Main Exercise
 **👉 Start here:** [Exercise 01 - Git Basics](/exercises/ex01_basics/instructions.md)
+
+Master the fundamentals: commits, staging, pushing, and commit conventions.
+
+### Bonus - Advanced Techniques
+**🎁 Level up:** [Bonus - Advanced Git](/exercises/bonus/instructions.md)
+
+Once you've completed the basics, dive into:
+- Branching strategies
+- Merging and conflict resolution
+- Rebasing for clean history
+- Stashing and undoing changes
+- Advanced Git workflows
 
 ## 📚 Additional Resources
 
