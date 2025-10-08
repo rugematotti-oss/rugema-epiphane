@@ -167,11 +167,11 @@ CONFLICT! Git can't decide which title to keep.
 Open `profile.md`. You'll see:
 
 ```
-<<<<<<< HEAD
-# Developer Profile
-=======
-# Professional Profile
->>>>>>> feature/better-title
+#<<<<<<< HEAD
+## Developer Profile
+#=======
+## Professional Profile
+#>>>>>>> feature/better-title
 ```
 
 - `<<<<<<< HEAD` - Your current branch's version
@@ -502,68 +502,4 @@ Make 3 different commits. Note the commit hashes (`git log --oneline`).
 
 **10.3 Cherry-Pick a Specific Commit**
 
-**RESEARCH TASK:** Find how to apply only ONE specific commit from your experimental branch to main.
-
----
-
-**10.4 Clean Up**
-
-Delete the experimental branch with force flag (it's unmerged).
-
----
-
-## Final Challenge
-
-Apply everything you learned:
-
-1. Create a feature branch
-2. Make 5 commits
-3. Interactive rebase to squash into 2 commits
-4. Rebase onto main
-5. Create and resolve a merge conflict
-6. Use stash during the process
-7. Cherry-pick a commit
-8. Clean up all branches
-9. Push to GitHub
-
----
-
-## Self-Assessment
-
-Answer these without looking them up:
-
-1. What's the difference between merge and rebase?
-2. When should you NEVER use rebase?
-3. What's the difference between `git reset --soft` and `--hard`?
-4. How do you save work in progress without committing?
-5. What's the difference between fetch and pull?
-6. What are merge conflict markers?
-7. What does cherry-pick do?
-8. How do you delete a remote branch?
-
----
-
-## Summary
-
-You've learned:
-- Branching and merging
-- Conflict resolution
-- Stashing work
-- Undoing changes safely
-- Rebasing for clean history
-- Interactive rebase for cleanup
-- Advanced history tools
-- Remote branch management
-- Cherry-picking commits
-
-More importantly, you've learned how to find solutions independently using documentation and online resources.
-
----
-
-## Next Steps
-
-- Practice on real projects
-- Research Git workflows (Git Flow, GitHub Flow)
-- Learn about Git hooks
-- Explore advanced topics (submodules, bisect, reflog)
-- Contribute to open source projects
+You've completed the advanced Git exercises! 
