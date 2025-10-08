@@ -1,62 +1,51 @@
 # Bonus - Advanced Git Techniques
 
-## 📖 Introduction
+## Introduction
 
-Welcome to the advanced Git exercises! 🎉
+Welcome to the advanced Git exercises. You've mastered the basics - now it's time to learn techniques used by professional developers.
 
-You've mastered the basics - now it's time to learn the powerful techniques that professional developers use every day. These exercises will teach you how to work with branches, handle complex workflows, and recover from mistakes.
+**Important:** For certain key commands, you'll need to research the solution yourself using Git documentation or online resources. This mirrors real-world development where finding solutions independently is essential.
 
-**Prerequisites:** Complete Exercise 01 (Git Basics) first!
-
----
-
-## 🎯 What You'll Learn
-
-- Creating and managing branches
-- Merging branches and resolving conflicts
-- Rebasing for cleaner history
-- Stashing work in progress
-- Undoing changes safely
-- Advanced Git commands and workflows
+**Prerequisites:** Complete Exercise 01 (Git Basics) first.
 
 ---
 
-## ✅ Exercise 1: Working with Branches
+## Resources
 
-Branches allow you to work on features independently without affecting the main codebase.
+- [Official Git Documentation](https://git-scm.com/doc)
+- [Git Reference](https://git-scm.com/docs)
+- Command line help: `git <command> --help`
 
-### 1.1 Understanding Branches
+---
+
+## Exercise 1: Working with Branches
+
+### Objective
+Learn to create and navigate between branches to work on features independently.
+
+### Tasks
+
+**1.1 Explore Current Branches**
 
 ```bash
-# See all branches (you should only have 'main' for now)
 git branch
-
-# See which branch you're on
-git branch --show-current
 ```
 
-The `*` symbol indicates your current branch.
+The `*` indicates your current branch.
 
-### 1.2 Create Your First Branch
+---
 
-Let's create a new feature - adding a skills section to your profile.
+**1.2 Create Your First Feature Branch**
 
-```bash
-# Create a new branch called 'feature/add-skills'
-git branch feature/add-skills
+**RESEARCH TASK:** Find the command to create a new branch called `feature/add-skills` and switch to it.
 
-# Switch to the new branch
-git checkout feature/add-skills
+You can do this in one command or two separate commands.
 
-# Or do both in one command (recommended!)
-git checkout -b feature/add-skills
-```
+---
 
-**💡 Naming convention:** Use `feature/` for new features, `fix/` for bug fixes, `docs/` for documentation.
+**1.3 Make Changes**
 
-### 1.3 Make Changes on Your Branch
-
-Edit `profile.md` and add a new section at the end:
+Edit `profile.md` and add:
 
 ```markdown
 
@@ -67,73 +56,54 @@ Edit `profile.md` and add a new section at the end:
 - **Concepts:** Version control, Clean code
 ```
 
-### 1.4 Commit on Your Branch
+Commit your changes.
 
-You should know how to commit on your branch by now !
+---
 
-### 1.5 Switch Back to Main
+**1.4 Switch Branches**
 
-```bash
-# Go back to main branch
-git checkout main
+**RESEARCH TASK:** Find how to switch back to the `main` branch.
 
-# Open profile.md - your changes aren't here!
-cat profile.md
-```
+Open `profile.md` - your changes aren't there. They're safe on your feature branch.
 
-**🤔 What happened?** Your changes are safe on the `feature/add-skills` branch. This is the power of branching!
+---
 
-### 1.6 View All Branches
+**1.5 Visualize Branches**
 
 ```bash
-# See all branches and their last commits
+# See branches with last commits
 git branch -v
 
-# See a visual graph
+# Visual graph
 git log --oneline --graph --all
 ```
 
 ---
 
-## ✅ Exercise 2: Merging Branches
+## Exercise 2: Merging Branches
 
-Now let's bring your changes back to the main branch.
+### Objective
+Merge your feature branch back into main.
 
-### 2.1 Merge Your Feature Branch
+### Tasks
 
-```bash
-# Make sure you're on main
-git checkout main
+**2.1 Merge Your Feature**
 
-# Merge the feature branch
-git merge feature/add-skills
-```
+**RESEARCH TASK:** Find how to merge `feature/add-skills` into `main`.
 
-If it's a "fast-forward" merge, Git will simply move the main pointer forward. Easy!
+Requirements:
+- You must be on the `main` branch first
+- Then merge the feature branch
 
-### 2.2 Verify the Merge
+---
 
-```bash
-# Check profile.md - your skills section should be there!
-cat profile.md
+**2.2 Clean Up**
 
-# View the history
-git log --oneline --graph
-```
+**RESEARCH TASK:** Find how to delete the `feature/add-skills` branch after it's merged.
 
-### 2.3 Delete the Merged Branch
+---
 
-Once merged, you can delete the feature branch:
-
-```bash
-# Delete the branch (it's merged, so it's safe)
-git branch -d feature/add-skills
-
-# Verify it's gone
-git branch
-```
-
-### 2.4 Push to GitHub
+**2.3 Push Changes**
 
 ```bash
 git push
@@ -141,76 +111,60 @@ git push
 
 ---
 
-## ✅ Exercise 3: Handling Merge Conflicts
+## Exercise 3: Handling Merge Conflicts
 
-Conflicts happen when the same lines are changed in different branches. Let's create and resolve one!
+### Objective
+Create and resolve merge conflicts.
 
-### 3.1 Create Two Conflicting Branches
+### Tasks
 
-**Branch 1: Update title**
+**3.1 Create Two Conflicting Branches**
 
+Branch 1:
 ```bash
-# Create and switch to a new branch
 git checkout -b feature/update-title
-
-# Edit profile.md - change the title to "# Developer Profile"
-# (edit the first line from "# My Profile" to "# Developer Profile")
 ```
 
-Edit the file, then:
+Edit `profile.md` - change first line from `# My Profile` to `# Developer Profile`
 
-commit your changes
+Commit your changes.
 
-**Branch 2: Different title update**
-
+Branch 2:
 ```bash
-# Go back to main
 git checkout main
-
-# Create another branch
 git checkout -b feature/better-title
-
-# Edit profile.md - change the title to "# Professional Profile"
-# (edit the first line from "# My Profile" to "# Professional Profile")
 ```
 
-Edit the file, then:
+Edit `profile.md` - change first line from `# My Profile` to `# Professional Profile`
 
-commit your changes
+Commit your changes.
 
-### 3.2 Merge First Branch (No Conflict)
+---
+
+**3.2 Merge First Branch**
 
 ```bash
-# Go to main
 git checkout main
-
-# Merge the first feature
 git merge feature/update-title
 ```
 
-This should work fine!
+This should work fine.
 
-### 3.3 Merge Second Branch (CONFLICT!)
+---
+
+**3.3 Create the Conflict**
 
 ```bash
-# Try to merge the second feature
 git merge feature/better-title
 ```
 
-**💥 CONFLICT!** Git can't decide which title to use.
+CONFLICT! Git can't decide which title to keep.
 
-### 3.4 Identify the Conflict
+---
 
-```bash
-# See the conflict status
-git status
-```
+**3.4 Understand Conflict Markers**
 
-Git tells you which files have conflicts.
-
-### 3.5 Resolve the Conflict
-
-Open `profile.md` and you'll see something like:
+Open `profile.md`. You'll see:
 
 ```
 <<<<<<< HEAD
@@ -220,623 +174,396 @@ Open `profile.md` and you'll see something like:
 >>>>>>> feature/better-title
 ```
 
-**How to resolve:**
-
-1. Delete the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`)
-2. Choose which version to keep (or combine them)
-3. Save the file
-
-For example, choose a new title:
-
-```markdown
-# My Developer Profile
-```
-
-### 3.6 Complete the Merge
-
-commit and log your changes
-
-### 3.7 Clean Up
-
-```bash
-# Delete both feature branches
-git branch -d feature/update-title
-git branch -d feature/better-title
-
-# Push to GitHub
-git push
-```
-
-**🎉 You just resolved your first merge conflict!**
+- `<<<<<<< HEAD` - Your current branch's version
+- `=======` - Separator
+- `>>>>>>>` - The incoming branch's version
 
 ---
 
-## ✅ Exercise 4: Git Stash - Save Work for Later
+**3.5 Resolve the Conflict**
 
-Sometimes you need to switch branches but your work isn't ready to commit.
+**RESEARCH TASK:** Find how to resolve the conflict and complete the merge.
 
-### 4.1 Start Working on Something
+Steps needed:
+1. Edit the file to choose which version to keep (or write a new one)
+2. Remove conflict markers
+3. Stage the resolved file
+4. Complete the merge
+
+---
+
+**3.6 Clean Up**
+
+Delete both feature branches and push to GitHub.
+
+---
+
+## Exercise 4: Git Stash
+
+### Objective
+Save uncommitted work temporarily.
+
+### Scenario
+
+You're working on a feature but need to switch branches urgently. Your work isn't ready to commit.
+
+### Tasks
+
+**4.1 Start Working**
 
 ```bash
-# Create a new branch
 git checkout -b feature/add-hobbies
-
-# Edit profile.md - add a hobbies section (but don't finish it)
-echo -e "\n## Hobbies\n\n- TODO: add hobbies" >> profile.md
-
-# Check status
-git status
 ```
 
-### 4.2 Urgent: Switch to Main (But Work Isn't Ready!)
-
-```bash
-# Try to switch branches
-git checkout main
-```
-
-Git will warn you about uncommitted changes!
-
-### 4.3 Stash Your Changes
-
-```bash
-# Save your work temporarily
-git stash
-
-# Or with a message
-git stash push -m "work in progress on hobbies section"
-
-# Check status - working directory is clean!
-git status
-```
-
-### 4.4 Switch Branches and Do Other Work
-
-```bash
-# Now you can switch
-git checkout main
-
-# Your incomplete changes are safely stored
-# Do other work here...
-```
-
-### 4.5 Return and Restore Your Work
-
-```bash
-# Go back to your feature branch
-git checkout feature/add-hobbies
-
-# See stashed changes
-git stash list
-
-# Restore your work
-git stash pop
-```
-
-**💡 `git stash pop`** applies the latest stash and removes it from the stash list.
-
-### 4.6 Complete Your Work
-
-Finish editing the hobbies section, then:
-
-```bash
-# Edit profile.md to complete the hobbies section and commit your changes
-# For example: replace TODO with actual hobbies
-
-# Merge to main
-git checkout main
-git merge feature/add-hobbies
-git branch -d feature/add-hobbies
-
-git push
-```
+Add a hobbies section to `profile.md` (but don't finish it). Don't commit yet.
 
 ---
 
-## ✅ Exercise 5: Undoing Changes
-
-Mistakes happen! Let's learn how to fix them.
-
-### 5.1 Undo Unstaged Changes
+**4.2 Try to Switch**
 
 ```bash
-# Make a change to profile.md (add some random text)
-echo "RANDOM MISTAKE" >> profile.md
-
-# Check the change
-git diff
-
-# Undo it (restore from last commit)
-git restore profile.md
-
-# Or the old way:
-# git checkout -- profile.md
+git checkout main
 ```
 
-### 5.2 Unstage Changes (Keep the Changes)
-
-```bash
-# Make a change and stage it
-echo -e "\n## Contact\n\nemail@example.com" >> profile.md
-
-# Oops, I staged too early! Unstage it
-git restore --staged profile.md
-
-# Or the old way:
-# git reset HEAD profile.md
-
-# The change is still there, just unstaged
-git status
-```
-
-### 5.3 Amend the Last Commit
-
-```bash
-# Stage and commit (but with a typo in the message, for example "contcat" should be "contact")
-
-# Oops! "contcat" should be "contact"
-# Amend the commit message
-git commit --amend -m "feat: add contact section"
-```
-
-**⚠️ Warning:** Only amend commits that haven't been pushed yet!
-
-### 5.4 Undo the Last Commit (Keep Changes)
-
-```bash
-# Undo the last commit but keep the changes
-git reset --soft HEAD~1
-
-# Your changes are still staged
-git status
-
-# You can now modify and recommit
-git commit -m "feat: add contact information"
-```
-
-### 5.5 Undo the Last Commit (Discard Changes)
-
-```bash
-# Create a test file and commit it
-echo "test" > temp.txt
-
-# Completely undo it (⚠️ DANGER: this deletes changes!)
-git reset --hard HEAD~1
-
-# temp.txt is gone!
-ls temp.txt  # file not found
-```
-
-**⚠️ DANGER:** `--hard` deletes all changes. Use with caution!
-
-### 5.6 Push Your Final Changes
-
-```bash
-git push
-```
+Git won't let you switch with uncommitted changes.
 
 ---
 
-## ✅ Exercise 6: Git Rebase (Advanced)
+**4.3 Stash Your Changes**
 
-Rebasing rewrites history to create a cleaner, linear timeline.
+**RESEARCH TASK:** Find how to temporarily save your uncommitted changes.
 
-### 6.1 Create a Feature Branch
+After stashing, you should be able to switch branches.
+
+---
+
+**4.4 Restore Stashed Work**
+
+**RESEARCH TASK:** Find how to restore your stashed changes.
+
+Look for the difference between:
+- `git stash apply` - applies stash, keeps it in list
+- `git stash pop` - applies stash, removes from list
+
+---
+
+**4.5 Complete Your Work**
+
+Finish the hobbies section, commit, merge to main, and clean up.
+
+---
+
+## Exercise 5: Undoing Changes
+
+### Objective
+Learn different ways to undo changes safely.
+
+### Tasks
+
+**5.1 Discard Unstaged Changes**
+
+Make an unwanted change to `profile.md`.
+
+**RESEARCH TASK:** Find how to discard this change and restore the file.
+
+Warning: This permanently deletes your changes.
+
+---
+
+**5.2 Unstage Files**
+
+Make a change, stage it with `git add`.
+
+**RESEARCH TASK:** Find how to unstage the file while keeping the changes.
+
+---
+
+**5.3 Amend Last Commit**
+
+Create a commit with a typo in the message.
+
+**RESEARCH TASK:** Find how to fix the last commit message.
+
+Warning: Only amend commits that haven't been pushed.
+
+---
+
+**5.4 Undo Last Commit**
+
+**RESEARCH TASK:** Find how to undo your last commit while keeping changes staged.
+
+---
+
+**5.5 Hard Reset (Dangerous)**
+
+**RESEARCH TASK:** Find how to completely undo a commit and delete all changes.
+
+Warning: This permanently deletes changes. Very dangerous.
+
+---
+
+## Exercise 6: Git Rebase
+
+### Objective
+Create linear history with rebase.
+
+### Understanding Rebase
+
+**RESEARCH TASK:** Research the difference between rebase and merge.
+
+Questions to answer:
+- When should you use rebase vs merge?
+- What does "rewriting history" mean?
+- What's the golden rule of rebasing?
+
+### Tasks
+
+**6.1 Create a Scenario**
 
 ```bash
-# Create a new branch
 git checkout -b feature/add-projects
-
-# Add a projects section to profile.md
-echo -e "\n## My Projects\n\n- Workshop Git - This repository!" >> profile.md
-
-# commit your changes
 ```
 
-### 6.2 Simulate Changes on Main
+Add a projects section to `profile.md` and commit.
 
 ```bash
-# Go to main
 git checkout main
-
-# Make a change to notes.md
-echo -e "\n## Advanced Concepts\n\n- Branching and merging" >> notes.md
-
-# commit your changes
 ```
 
-### 6.3 Rebase Your Feature Branch
+Make a change to `notes.md` and commit.
+
+Your branches have diverged.
+
+---
+
+**6.2 Rebase Your Feature**
+
+**RESEARCH TASK:** Find how to rebase `feature/add-projects` onto `main`.
+
+---
+
+**6.3 Complete the Rebase**
+
+Merge your feature into main. Notice it's a fast-forward merge.
 
 ```bash
-# Go back to your feature
-git checkout feature/add-projects
-
-# Rebase on top of main
-git rebase main
-```
-
-**What happened?** Git took your feature commits and "replayed" them on top of the latest main.
-
-### 6.4 View the Result
-
-```bash
-# See the linear history
-git log --oneline --graph --all
-```
-
-Notice how your feature branch commits now come AFTER the main branch commits!
-
-### 6.5 Merge (Fast-Forward)
-
-```bash
-# Merge into main (will be a fast-forward)
 git checkout main
 git merge feature/add-projects
-
-# Clean up
-git branch -d feature/add-projects
-
-git push
 ```
-
-**🤔 Rebase vs Merge?**
-- **Merge:** Preserves history, shows when branches were merged
-- **Rebase:** Creates clean, linear history, but rewrites commits
-
-**⚠️ Golden Rule:** Never rebase commits that have been pushed to a shared repository!
 
 ---
 
-## ✅ Exercise 7: Interactive Rebase (Clean Up History)
+## Exercise 7: Interactive Rebase
 
-Interactive rebase lets you edit, combine, or reorder commits.
+### Objective
+Clean up messy commit history.
 
-### 7.1 Create Multiple Commits
+### Tasks
+
+**7.1 Create Messy Commits**
 
 ```bash
-# Create a new branch
 git checkout -b feature/cleanup-demo
-
-# Make several small commits
-echo "Education: University" >> profile.md
-git add profile.md
-git commit -m "add education"
-
-echo "Location: France" >> profile.md
-git add profile.md
-git commit -m "add location"
-
-echo "Languages: French, English" >> profile.md
-git add profile.md
-git commit -m "add languages"
 ```
 
-### 7.2 View the Commits
+Make 3 separate commits:
+- Add education to `profile.md`
+- Add location to `profile.md`
+- Add languages to `profile.md`
 
-```bash
-git log --oneline
-```
-
-You should see your three new commits.
-
-### 7.3 Interactive Rebase (Squash Commits)
-
-```bash
-# Rebase the last 3 commits interactively
-git rebase -i HEAD~3
-```
-
-An editor will open showing:
-
-```
-pick abc123 add education
-pick def456 add location
-pick ghi789 add languages
-```
-
-**Change it to:**
-
-```
-pick abc123 add education
-squash def456 add location
-squash ghi789 add languages
-```
-
-Save and close. Another editor will open for the combined commit message:
-
-```
-feat: add personal information (education, location, languages)
-```
-
-Save and close.
-
-### 7.4 View the Cleaned History
-
-```bash
-git log --oneline
-```
-
-Now you have ONE clean commit instead of three!
-
-### 7.5 Merge to Main
-
-```bash
-git checkout main
-git merge feature/cleanup-demo
-git branch -d feature/cleanup-demo
-
-git push
-```
+These could logically be one commit.
 
 ---
 
-## ✅ Exercise 8: Advanced Git Log and History
+**7.2 Squash Commits**
 
-Master Git's powerful history exploration tools.
+**RESEARCH TASK:** Find how to combine (squash) the last 3 commits into 1.
 
-### 8.1 Pretty Log Formats
+You need to:
+1. Start interactive rebase for last 3 commits
+2. Change `pick` to `squash` for commits to combine
+3. Edit the final commit message
+
+---
+
+**7.3 Complete**
+
+Merge to main, clean up, and push.
+
+---
+
+## Exercise 8: Advanced Git Log
+
+### Tasks
+
+**8.1 Custom Log Formats**
+
+Try these:
 
 ```bash
-# Compact with graph
+# Graph with all branches
 git log --oneline --graph --decorate --all
-
-# With dates
-git log --oneline --graph --decorate --all --date=short --pretty=format:"%h %ad %s"
 
 # Last 5 commits
 git log --oneline -5
 
 # Commits by author
-git log --author="Your Name" --oneline
+git log --author="Your Name"
 ```
 
-### 8.2 Search History
+---
+
+**8.2 Search History**
+
+**RESEARCH TASK:** Find how to search for commits containing specific text in the message.
+
+Example: Find all commits mentioning "profile"
+
+---
+
+**8.3 File History**
 
 ```bash
-# Find commits that mention "profile"
-git log --grep="profile" --oneline
+# See commits that modified a file
+git log -- profile.md
 
-# Find commits that changed a specific file
-git log --oneline -- profile.md
-
-# See what changed in each commit for a file
+# See actual changes
 git log -p profile.md
 ```
 
-### 8.3 Compare Commits
+---
 
-```bash
-# Show changes between two commits
-git diff HEAD~2 HEAD
+**8.4 Create an Alias**
 
-# Show changes in a specific commit
-git show HEAD~1
-```
+**RESEARCH TASK:** Find how to create a Git alias for a log command you like.
 
-### 8.4 Create a Git Alias (Bonus)
-
-Make your life easier with aliases:
-
-```bash
-# Create a nice log alias
-git config --global alias.lg "log --oneline --graph --decorate --all"
-
-# Now you can use:
-git lg
-```
+Example: Create `git lg` for a nice graph view.
 
 ---
 
-## ✅ Exercise 9: Working with Remote Branches
+## Exercise 9: Remote Branches
 
-Learn to collaborate with remote branches on GitHub.
+### Tasks
 
-### 9.1 View Remote Branches
+**9.1 View Remote Branches**
 
 ```bash
-# See all branches (local and remote)
+# All branches (local and remote)
 git branch -a
 
-# See only remote branches
+# Only remote branches
 git branch -r
 ```
 
-### 9.2 Create and Push a New Branch
+---
 
-```bash
-# Create a new branch
-git checkout -b feature/readme-update
+**9.2 Push a New Branch**
 
-# Make a change to README.md
-echo -e "\n## My Progress\n\nCompleted all Git exercises!" >> notes.md
+Create a branch, make changes, commit.
 
-# commit your changes
-
-# Push to GitHub and set upstream
-git push -u origin feature/readme-update
-```
-
-### 9.3 Fetch Remote Changes
-
-```bash
-# See what's on the remote (doesn't download)
-git fetch origin
-
-# See all branches again
-git branch -a
-```
-
-### 9.4 Merge Remote Branch
-
-```bash
-# Go to main
-git checkout main
-
-# Merge the remote branch
-git merge origin/feature/readme-update
-
-# Or pull (fetch + merge in one command)
-# git pull origin main
-```
-
-### 9.5 Delete Remote Branch
-
-```bash
-# Delete the branch locally
-git branch -d feature/readme-update
-
-# Delete the branch on GitHub
-git push origin --delete feature/readme-update
-```
+**RESEARCH TASK:** Find how to push this new branch to GitHub and set it as upstream.
 
 ---
 
-## ✅ Exercise 10: Git Cherry-Pick
+**9.3 Understanding Fetch vs Pull**
 
+**RESEARCH TASK:** Research the difference between `git fetch` and `git pull`.
+
+---
+
+**9.4 Delete Remote Branch**
+
+**RESEARCH TASK:** Find how to delete a branch from GitHub (remote repository).
+
+---
+
+## Exercise 10: Git Cherry-Pick
+
+### Objective
 Apply specific commits from one branch to another.
 
-### 10.1 Create a Feature with Multiple Commits
+### Tasks
+
+**10.1 Understanding Cherry-Pick**
+
+**RESEARCH TASK:** Research what cherry-pick does and when it's useful.
+
+---
+
+**10.2 Create a Scenario**
 
 ```bash
-# Create a branch
 git checkout -b feature/experimental
-
-# Make two distinct changes
-echo -e "\n## Achievements\n\n- Git Master" >> profile.md
-git add profile.md
-git commit -m "feat: add achievements section"
-
-echo -e "\n- Merge Conflict Resolver" >> profile.md
-git add profile.md
-git commit -m "feat: add second achievement"
-
-# Note the commit hashes
-git log --oneline -2
 ```
 
-### 10.2 Cherry-Pick a Specific Commit
-
-```bash
-# Go to main
-git checkout main
-
-# Pick only the first commit (replace <hash> with the actual hash)
-git cherry-pick <hash-of-first-commit>
-
-# Check profile.md - only the first achievement is there!
-```
-
-### 10.3 Clean Up
-
-```bash
-# Delete the experimental branch
-git branch -D feature/experimental  # -D forces deletion of unmerged branch
-
-git push
-```
+Make 3 different commits. Note the commit hashes (`git log --oneline`).
 
 ---
 
-## 🎉 Congratulations!
+**10.3 Cherry-Pick a Specific Commit**
 
-You've completed the advanced Git exercises! You now know:
-
-✅ **Branching** - Create and manage feature branches  
-✅ **Merging** - Combine work from different branches  
-✅ **Conflict Resolution** - Handle merge conflicts professionally  
-✅ **Stashing** - Save work in progress  
-✅ **Undoing Changes** - Fix mistakes safely  
-✅ **Rebasing** - Create clean, linear history  
-✅ **Interactive Rebase** - Clean up commit history  
-✅ **Advanced Logging** - Explore repository history  
-✅ **Remote Branches** - Work with GitHub branches  
-✅ **Cherry-Picking** - Apply specific commits  
-
-## 📚 Next Steps
-
-You're now equipped with professional Git skills! Here's what you can do next:
-
-1. **Practice on Real Projects** - Apply these techniques in your own repositories
-2. **Learn Git Workflows** - Explore Git Flow, GitHub Flow, or Trunk-Based Development
-3. **Contribute to Open Source** - Find projects on GitHub and submit pull requests
-4. **Master Git Hooks** - Automate tasks with pre-commit and post-commit hooks
-5. **Explore Advanced Topics** - Git submodules, subtrees, worktrees
-
-## 🛠️ Essential Commands Summary
-
-### Branching
-```bash
-git branch                    # List branches
-git branch <name>             # Create branch
-git checkout <name>           # Switch branch
-git checkout -b <name>        # Create and switch
-git branch -d <name>          # Delete branch
-git branch -D <name>          # Force delete
-```
-
-### Merging
-```bash
-git merge <branch>            # Merge branch
-git merge --abort             # Abort merge
-```
-
-### Stashing
-```bash
-git stash                     # Stash changes
-git stash list                # List stashes
-git stash pop                 # Apply and remove latest stash
-git stash apply               # Apply but keep stash
-git stash drop                # Remove latest stash
-```
-
-### Undoing
-```bash
-git restore <file>            # Discard changes
-git restore --staged <file>   # Unstage file
-git reset --soft HEAD~1       # Undo commit, keep changes
-git reset --hard HEAD~1       # Undo commit, discard changes
-git commit --amend            # Modify last commit
-```
-
-### Rebasing
-```bash
-git rebase <branch>           # Rebase on branch
-git rebase -i HEAD~n          # Interactive rebase (n commits)
-git rebase --abort            # Abort rebase
-git rebase --continue         # Continue after conflict
-```
-
-### History
-```bash
-git log --oneline --graph     # Visual history
-git log --grep="text"         # Search commits
-git log -- <file>             # File history
-git diff <commit1> <commit2>  # Compare commits
-git cherry-pick <hash>        # Apply specific commit
-```
-
-## 💡 Pro Tips
-
-1. **Commit Often** - Small commits are easier to manage and revert
-2. **Branch for Everything** - Create branches for all features and fixes
-3. **Pull Before Push** - Always pull latest changes before pushing
-4. **Never Rebase Shared Commits** - Only rebase local, unpushed commits
-5. **Write Clear Messages** - Future you (and your team) will thank you
-6. **Use Git Aliases** - Save time with custom shortcuts
-7. **Read Error Messages** - Git's errors are usually helpful
-8. **Backup Before Risky Operations** - Create a backup branch before rebasing
-
-## 🎯 Challenge Yourself
-
-Try these scenarios to solidify your knowledge:
-
-1. Create a feature branch, make 5 commits, squash them into 1 using interactive rebase
-2. Create two branches with conflicting changes, merge them and resolve conflicts
-3. Use stash to switch between multiple features in progress
-4. Rebase a feature branch onto an updated main branch
-5. Use cherry-pick to apply a single commit from one branch to another
+**RESEARCH TASK:** Find how to apply only ONE specific commit from your experimental branch to main.
 
 ---
 
-**You're now a Git power user! Happy coding!** 🚀🎊
+**10.4 Clean Up**
 
+Delete the experimental branch with force flag (it's unmerged).
+
+---
+
+## Final Challenge
+
+Apply everything you learned:
+
+1. Create a feature branch
+2. Make 5 commits
+3. Interactive rebase to squash into 2 commits
+4. Rebase onto main
+5. Create and resolve a merge conflict
+6. Use stash during the process
+7. Cherry-pick a commit
+8. Clean up all branches
+9. Push to GitHub
+
+---
+
+## Self-Assessment
+
+Answer these without looking them up:
+
+1. What's the difference between merge and rebase?
+2. When should you NEVER use rebase?
+3. What's the difference between `git reset --soft` and `--hard`?
+4. How do you save work in progress without committing?
+5. What's the difference between fetch and pull?
+6. What are merge conflict markers?
+7. What does cherry-pick do?
+8. How do you delete a remote branch?
+
+---
+
+## Summary
+
+You've learned:
+- Branching and merging
+- Conflict resolution
+- Stashing work
+- Undoing changes safely
+- Rebasing for clean history
+- Interactive rebase for cleanup
+- Advanced history tools
+- Remote branch management
+- Cherry-picking commits
+
+More importantly, you've learned how to find solutions independently using documentation and online resources.
+
+---
+
+## Next Steps
+
+- Practice on real projects
+- Research Git workflows (Git Flow, GitHub Flow)
+- Learn about Git hooks
+- Explore advanced topics (submodules, bisect, reflog)
+- Contribute to open source projects

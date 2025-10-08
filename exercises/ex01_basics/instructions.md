@@ -1,6 +1,6 @@
 # Exercise 01 - Git Basics
 
-## 📖 Introduction
+## Introduction
 
 Welcome to the first (and main) exercise of this Git workshop! This exercise will guide you through all the essential Git commands and workflows you need to know as a developer.
 
@@ -8,7 +8,7 @@ You'll learn by doing - each step builds on the previous one, and by the end, yo
 
 ---
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 - Configure Git with your identity
 - Create and manage files with Git
@@ -18,7 +18,7 @@ You'll learn by doing - each step builds on the previous one, and by the end, yo
 
 ---
 
-## ✅ Step 1: Repository Setup & Configuration
+## Step 1: Repository Setup & Configuration
 
 ### 1.1 Fork and Clone the Repository
 
@@ -54,7 +54,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-**✨ Tip:** The `--global` flag means this configuration applies to all your Git repositories.
+**Tip:** The `--global` flag means this configuration applies to all your Git repositories.
 
 ### 1.4 Verify Everything is Working
 
@@ -67,7 +67,7 @@ You should see a message like "nothing to commit, working tree clean" (or simila
 
 ---
 
-## ✅ Step 2: Your First Commit
+## Step 2: Your First Commit
 
 Now let's create your first file and make your first commit!
 
@@ -128,11 +128,11 @@ git commit -m "feat: add personal profile"
 git push
 ```
 
-**🎉 Congratulations!** You just made your first proper commit and pushed it to GitHub. Go check your repository on GitHub - you should see your new file!
+**Congratulations!** You just made your first proper commit and pushed it to GitHub. Go check your repository on GitHub - you should see your new file!
 
 ---
 
-## ✅ Step 3: Making Corrections
+## Step 3: Making Corrections
 
 Mistakes happen! Let's practice fixing them.
 
@@ -174,7 +174,7 @@ git push
 
 ---
 
-## ✅ Step 4: Adding Documentation
+## Step 4: Adding Documentation
 
 Good developers document their learning. Let's create a notes file.
 
@@ -226,7 +226,7 @@ git push
 
 ---
 
-## ✅ Step 5: Cleaning Up
+## Step 5: Cleaning Up
 
 Projects accumulate files. Let's practice removing unnecessary files.
 
@@ -268,7 +268,7 @@ git push
 
 ---
 
-## ✅ Step 6: Review Your Work
+## Step 6: Review Your Work
 
 Let's look at everything you've accomplished!
 
@@ -303,7 +303,7 @@ git log --oneline --graph --decorate
 
 ---
 
-## ✅ Step 7: Final Documentation
+## Step 7: Final Documentation
 
 Let's wrap up with one final commit documenting what you've learned.
 
@@ -315,12 +315,12 @@ Open `notes.md` again and add a section at the end:
 
 ## What I Accomplished in This Workshop
 
-- ✅ Configured Git with my identity
-- ✅ Created my first commit
-- ✅ Fixed mistakes using proper commit messages
-- ✅ Added documentation
-- ✅ Learned to clean up files properly
-- ✅ Reviewed my commit history
+- Configured Git with my identity
+- Created my first commit
+- Fixed mistakes using proper commit messages
+- Added documentation
+- Learned to clean up files properly
+- Reviewed my commit history
 
 ## Next Steps
 
@@ -353,25 +353,23 @@ Go to your GitHub repository and:
 
 ---
 
-## 🎉 Congratulations!
+## Congratulations!
 
 You've completed the Git Basics workshop!
 
-## 📚 What's Next?
+## What's Next?
 
-Now that you've mastered the basics, you can try the bonus exercises:
+Now that you've mastered the basics, you can try the bonus exercises.
 
 The **bonus exercises** cover advanced Git techniques used by professional developers:
 
-🌿 **Branching strategies** - Learn to work on multiple features simultaneously  
-🔀 **Merging and rebasing** - Combine work from different branches  
-⚔️ **Conflict resolution** - Handle merge conflicts like a pro  
-📦 **Stashing** - Save work in progress temporarily  
-↩️ **Undoing changes** - Learn to fix mistakes safely  
-🔍 **Advanced history** - Master Git's powerful history tools  
+- **Branching strategies** - Work on multiple features simultaneously  
+- **Merging and rebasing** - Combine work from different branches  
+- **Conflict resolution** - Handle merge conflicts  
+- **Stashing** - Save work in progress temporarily  
+- **Undoing changes** - Fix mistakes safely  
+- **Advanced history** - Explore Git's powerful history tools  
 
-**👉 Continue your journey:** [Bonus - Advanced Git](/exercises/bonus/instructions.md)
+**Note:** For key commands in the bonus exercises, you'll need to research solutions yourself using Git documentation or online resources. This is how professional developers work.
 
----
-
-**Happy coding and happy Git-ing!** 🚀
+**Continue here:** [Bonus - Advanced Git](/exercises/bonus/instructions.md)
